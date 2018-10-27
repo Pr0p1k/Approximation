@@ -64,8 +64,10 @@ class Controller {
                 sumXY += x * y
                 sumSqrX += x * x
             }
-            //TODO calculating those damn coefficients
-            //TODO drawing of approximating lines
+            val a = (points.size * sumXY - sumX * sumY) / (points.size * sumSqrX - sumX * sumX)
+            val b = (sumY - a * sumX) / points.size
+            //TODO calculating of the second damn line
+            //TODO drawing of damn approximating lines
         }
 
     }
