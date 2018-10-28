@@ -56,9 +56,13 @@ class Controller {
             var sumY = 0.0
             var sumXY = 0.0
             var sumSqrX = 0.0
+            var max = Double.NEGATIVE_INFINITY
+            var min = Double.POSITIVE_INFINITY
             for (i in 1..points.size) {
                 val x = points[i].first
                 val y = points[i].second
+                if (x > max) max = x
+                else if (x < min) min = x
                 sumX += x
                 sumY += y
                 sumXY += x * y
@@ -66,7 +70,10 @@ class Controller {
             }
             val a = (points.size * sumXY - sumX * sumY) / (points.size * sumSqrX - sumX * sumX)
             val b = (sumY - a * sumX) / points.size
-            //TODO calculating of the second damn line
+            val line = XYChart.Series<String, Double>()
+            line.data.add(XYChart.Data(min.toString(), a * min + b))
+            line.data.add(XYChart.Data(max.toString(), a * max + b))
+            //TODO calculation of the second damn line
             //TODO drawing of damn approximating lines
         }
 
