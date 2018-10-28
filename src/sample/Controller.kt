@@ -30,7 +30,7 @@ class Controller {
     lateinit var drawButton: Button
 
     @FXML
-    lateinit var mainChart: LineChart<String, Double>
+    lateinit var mainChart: LineChart<Double, Double>
 
     fun initialize() {
         val points = pointsList.items
@@ -47,22 +47,24 @@ class Controller {
 
         drawButton.setOnAction {
             mainChart.data.clear()
-            val series = XYChart.Series<String, Double>()
+            val series = XYChart.Series<Double, Double>()
+            series.name = "Original function"
             for (point in points) {
-                series.data.add(XYChart.Data<String, Double>(point.first.toString(), point.second))
+                series.data.add(XYChart.Data(point.first, point.second))
             }
             mainChart.data.add(series)
             var sumX = 0.0
             var sumY = 0.0
             var sumXY = 0.0
             var sumSqrX = 0.0
-            var max = Double.NEGATIVE_INFINITY
-            var min = Double.POSITIVE_INFINITY
-            for (i in 1..points.size) {
+            var max = Double.MIN_VALUE
+            var min = Double.MAX_VALUE
+            for (i in 0..(points.size - 1)) {
                 val x = points[i].first
                 val y = points[i].second
+                if (x < min) min = x
+                println(min)
                 if (x > max) max = x
-                else if (x < min) min = x
                 sumX += x
                 sumY += y
                 sumXY += x * y
@@ -70,9 +72,12 @@ class Controller {
             }
             val a = (points.size * sumXY - sumX * sumY) / (points.size * sumSqrX - sumX * sumX)
             val b = (sumY - a * sumX) / points.size
-            val line = XYChart.Series<String, Double>()
-            line.data.add(XYChart.Data(min.toString(), a * min + b))
-            line.data.add(XYChart.Data(max.toString(), a * max + b))
+            val line = XYChart.Series<Double, Double>()
+            line.name = "Approximating 1"
+            line.data.add(XYChart.Data(min, a * min + b))
+            line.data.add(XYChart.Data(max, a * max + b))
+            mainChart.data.add(line)
+            
             //TODO calculation of the second damn line
             //TODO drawing of damn approximating lines
         }

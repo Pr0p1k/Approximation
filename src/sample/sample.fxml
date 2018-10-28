@@ -29,7 +29,7 @@
       </SplitPane>
       <LineChart fx:id="mainChart" prefHeight="422.0" prefWidth="303.0">
         <xAxis>
-          <CategoryAxis label="x" side="BOTTOM" />
+          <NumberAxis label="x" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis label="y" side="LEFT" />
