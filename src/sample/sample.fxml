@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.2783083219645293" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<SplitPane dividerPositions="0.2783083219645293" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <items>
       <SplitPane dividerPositions="0.45734597156398105" orientation="VERTICAL" prefHeight="422.0" prefWidth="219.0">
         <items>
@@ -24,6 +23,7 @@
                   <Label layoutX="81.0" layoutY="22.0" text="Y:" />
                   <Label fx:id="errorLabel" layoutX="8.0" layoutY="154.0" prefHeight="15.0" prefWidth="188.0" textFill="#d71515" />
                   <Button fx:id="drawButton" layoutX="32.0" layoutY="113.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Draw" />
+                  <Label fx:id="resultLabel" layoutX="14.0" layoutY="176.0" prefHeight="35.0" prefWidth="482.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

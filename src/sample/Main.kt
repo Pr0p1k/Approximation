@@ -11,7 +11,6 @@ class Main : Application() {
     override fun start(primaryStage: Stage?) {
         val root = FXMLLoader.load<Parent>(javaClass.getResource("sample.fxml"))
         val scene = Scene(root)
-        val chart = scene.lookup ("#mainChart")
         primaryStage?.scene = scene
         primaryStage?.show()
     }
